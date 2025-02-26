@@ -1,0 +1,20 @@
+name: Open Colab
+
+on:
+  workflow_dispatch:  # 手動実行
+
+jobs:
+  open_colab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Install dependencies
+        run: pip install selenium
+
+      - name: Run Colab open script
+        run: python open_colab.py
